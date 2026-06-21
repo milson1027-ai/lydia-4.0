@@ -128,7 +128,7 @@
                     <button onclick="window.toggleMobileSidebar()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-md"></i></button>
                 </div>
                 
-                <!-- NEW: AIA 財富管理顧問模組 -->
+                <!-- AIA 財富管理顧問模組 -->
                 <p class="text-[10px] font-bold text-red-500 uppercase px-3 mb-2 tracking-widest flex items-center gap-1.5">
                     <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-600"></span> AIA 友邦保險銷售台
                 </p>
@@ -258,15 +258,46 @@
                                     <input type="number" id="aia-client-income" placeholder="400000" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-200 focus:outline-none">
                                 </div>
                             </div>
+                            
+                            <!-- 意向投保產品改成多選 Checkbox 排版 -->
                             <div>
-                                <label class="block text-slate-400 mb-1">意向投保產品 *</label>
-                                <select id="aia-client-policy" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-200 focus:outline-none focus:border-red-500">
-                                    <option value="醫療：尊顯海外醫療計劃">醫療：尊顯海外醫療計劃 (SMC)</option>
-                                    <option value="危疾：泰然安心保 / 守護危疾">危疾：泰然安心保 / 守護危疾</option>
-                                    <option value="儲蓄：盈御多元貨幣計劃">儲蓄：盈御多元貨幣計劃 (Wealth)</option>
-                                    <option value="強積金：AIA 優選 MPF">強積金/其他：AIA 優選 MPF</option>
-                                </select>
+                                <label class="block text-slate-400 mb-1.5 font-semibold">意向投保產品 * (可多選點選)</label>
+                                <div class="grid grid-cols-2 gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800" id="aia-policy-checkboxes-container">
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="醫療" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>醫療 🏥</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="危疾" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>危疾 🛡️</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="儲蓄" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>儲蓄 💰</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="人壽" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>人壽 🕊️</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="基金" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>基金 📈</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="強積金" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>強積金 🏢</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="團體醫療" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>團體醫療 👥</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer hover:text-red-400 transition-colors">
+                                        <input type="checkbox" value="其他" class="aia-policy-checkbox rounded text-red-600 focus:ring-0 bg-slate-900 border-slate-800 w-3.5 h-3.5">
+                                        <span>其他 ⚙️</span>
+                                    </label>
+                                </div>
                             </div>
+
                             <div class="grid grid-cols-2 gap-2">
                                 <div>
                                     <label class="block text-slate-400 mb-1">年繳保費 (HKD)</label>
@@ -776,7 +807,7 @@
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 text-xs"><i class="fa-solid fa-magnifying-glass"></i></span>
                         <input type="text" id="crm-search-input" oninput="window.renderCrmClients()" placeholder="搜尋品牌、聯絡人、備忘細節..." class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-300 focus:outline-none focus:border-teal-500">
                     </div>
-                    <span class="text-xs text-slate-400" id="crm-total-stat">累計錄入：0 家 brand</span>
+                    <span class="text-xs text-slate-400" id="crm-total-stat">累計錄入：0 家品牌</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="crm-list-container"></div>
@@ -1189,38 +1220,38 @@
                 name: "馬先生 (中小企老闆)",
                 phone: "98765432",
                 income: 1200000,
-                policyType: "醫療：尊顯海外醫療計劃",
+                policyType: "醫療、儲蓄",
                 premium: 65000,
                 stage: "Underwriting",
-                notes: "高淨值企業老闆，意向保單主要為全家規劃海外高端醫療。目前正在安排身體檢查及提供入息證明進行核保。"
+                notes: "高淨值企業老闆，意向保單主要為全家規劃海外高端醫療與增值儲蓄。目前正在安排身體檢查及提供入息證明進行核保。"
             },
             {
                 id: "aia-c2",
                 name: "梁小姐 (新手媽媽)",
                 phone: "65432109",
                 income: 380000,
-                policyType: "危疾：泰然安心保 / 守護危疾",
+                policyType: "危疾、人壽",
                 premium: 18000,
                 stage: "Proposal",
-                notes: "剛剛誕下大女兒，想為 BB 增設一份高槓桿危疾。已呈遞方案，正等候梁小姐返工後落實簽署。"
+                notes: "剛剛誕下大女兒，想為 BB 增設一份高槓桿危疾與人壽防護。已呈遞方案，正等候梁小姐返工後落實簽署。"
             },
             {
                 id: "aia-c3",
                 name: "何先生 (中產管理層)",
                 phone: "91122334",
                 income: 750000,
-                policyType: "儲蓄：盈御多元貨幣計劃",
+                policyType: "儲蓄、基金",
                 premium: 120000,
                 stage: "Inforce",
-                notes: "客戶意向儲蓄傳承、未來多國貨幣轉換。保單已順利生效(In-Force)，首年年繳保費 12萬 順利過數！"
+                notes: "客戶意向儲蓄傳承、未來多國貨幣轉換以及基金理財。保單已順利生效(In-Force)，首年年繳保費 12萬 順利過數！"
             }
         ];
 
         // Interactive follow-up seeds for AIA Sales Consultant (Lydia)
         const defaultAiaFollowups = [
-            { id: "aia-f1", date: "2026-06-15", status: "📊 交付 FNA 分析", text: "林太 (BB 醫療意向客戶)：與林太在尖沙咀港威大廈 AIA 會客室完成了 FNA 財務需求分析。她最擔心高昂的住院雜費，已為她度身定制尊顯醫療建議書。" },
-            { id: "aia-f2", date: "2026-06-18", status: "📝 提交核保資料", text: "馬先生 (尊顯海外醫療)：馬先生已填寫健康申報表，經理人已協助補交他的中小企商業登記證，等候中環法務部核保出信。" },
-            { id: "aia-f3", date: "2026-06-20", status: "✅ 簽單並收取保費", text: "何先生 (盈御多元貨幣儲蓄)：在金鐘太古廣場完成面談簽單。即場以信用卡過數年繳首期 12 萬保費，單據已成功上傳，標記為 Inforce 生效！" }
+            { id: "aia-f1", date: "2026-06-15", status: "📊 交付 FNA 分析", text: "林太 (BB 醫療意向客戶)：與林太在尖沙咀港威大廈 AIA 會客室完成了 FNA 財務需求分析。她最擔心高昂的住院雜費，已為她度身定制尊顯醫療與免找數出院建議書。" },
+            { id: "aia-f2", date: "2026-06-18", status: "📝 提交核保資料", text: "馬先生 (醫療、儲蓄)：馬先生已填寫健康申報表，經理人已協助補交他的中小企商業登記證與財務水單，等候中環法務部核保出信。" },
+            { id: "aia-f3", date: "2026-06-20", status: "✅ 簽單並收取保費", text: "何先生 (儲蓄、基金)：在金鐘太古廣場完成面談簽單。即場以信用卡過數年繳首期 12 萬保費，單據已成功上傳，標記為 Inforce 生效！" }
         ];
 
         const defaultCrmClients = [
@@ -1535,7 +1566,7 @@
             const userRoleDesc = document.getElementById('user-display-role');
 
             if (role === 'manager') {
-                // 經紀人主色改成：墨綠色（白字） bg-emerald-800 text-white
+                // 經紀人主色：墨綠色（白字）
                 mBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-emerald-800 text-white shadow-sm shadow-emerald-950/40 border border-emerald-700";
                 lBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 text-slate-400 hover:text-slate-200 bg-transparent border border-transparent";
                 
@@ -1545,7 +1576,7 @@
                 userRoleDesc.innerText = "正在協助 Lydia 的商業與 AIA 業績規劃";
                 window.showToast("已成功切換為：經紀人模式 💼 (主色：墨綠白底系)", true);
             } else {
-                // Lydia 主色改成：粉紅色（白字） bg-pink-500 text-white
+                // Lydia 主色：粉紅色（白字）
                 mBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 text-slate-400 hover:text-slate-200 bg-transparent border border-transparent";
                 lBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-pink-500 text-white shadow-sm shadow-pink-900/40 border border-pink-400";
                 
@@ -1886,7 +1917,7 @@
                 // Populate log select options dynamically
                 const opt = document.createElement('option');
                 opt.value = c.name;
-                opt.innerText = `${c.name} (${c.policyType.split('：')[0]})`;
+                opt.innerText = `${c.name} (${c.policyType})`;
                 selectLogClient.appendChild(opt);
 
                 const card = document.createElement('div');
@@ -1915,12 +1946,12 @@
                         <span class="text-[9px] px-2 py-0.5 rounded font-black ${stageBadge}">${stageText}</span>
                     </div>
                     <div class="p-2 bg-slate-900/60 rounded-lg text-[11px] text-slate-300">
-                        <p class="font-bold text-red-400">${c.policyType}</p>
-                        <p class="text-[10px] text-slate-500 mt-1">預算保費：<span class="text-white font-bold">HKD $${Number(c.premium || 0).toLocaleString()} / 年</span></p>
+                        <p class="font-bold text-red-400"><i class="fa-solid fa-shield-halved text-[10px] mr-1"></i>${c.policyType}</p>
+                        <p class="text-[10px] text-slate-500 mt-1">預算保費：<span class="text-white font-bold font-mono">HKD $${Number(c.premium || 0).toLocaleString()} / 年</span></p>
                     </div>
                     <p class="text-[10px] text-slate-400 line-clamp-2 leading-relaxed">${c.notes || '無額外背景備忘...'}</p>
                     <div class="flex justify-between items-center text-[10px] border-t border-slate-900 pt-2 opacity-80 group-hover:opacity-100">
-                        <button onclick="window.selectAiaClientForLog('${c.name}')" class="text-red-400 hover:underline font-bold"><i class="fa-solid fa-clipboard-check"></i> 跟進此客</button>
+                        <button onclick="window.selectAiaClientForLog('${c.name}')" class="text-red-400 hover:underline font-bold flex items-center gap-1"><i class="fa-solid fa-clipboard-check"></i> 跟進此客</button>
                         <div class="flex space-x-2">
                             <button onclick="window.editAiaClient('${c.id}')" class="text-slate-500 hover:text-white"><i class="fa-solid fa-user-pen"></i> 編輯</button>
                             <button onclick="window.deleteAiaClient('${c.id}')" class="text-rose-500 hover:text-rose-400"><i class="fa-solid fa-user-xmark"></i> 刪除</button>
@@ -1942,7 +1973,12 @@
             document.getElementById('aia-client-name').value = '';
             document.getElementById('aia-client-phone').value = '';
             document.getElementById('aia-client-income').value = '';
-            document.getElementById('aia-client-policy').value = '醫療：尊顯海外醫療計劃';
+            
+            // 重設多選點選框
+            document.querySelectorAll('.aia-policy-checkbox').forEach(cb => {
+                cb.checked = false;
+            });
+
             document.getElementById('aia-client-premium').value = '';
             document.getElementById('aia-client-stage').value = 'FNA';
             document.getElementById('aia-client-notes').value = '';
@@ -1953,13 +1989,25 @@
             const name = document.getElementById('aia-client-name').value.trim();
             const phone = document.getElementById('aia-client-phone').value.trim();
             const income = Number(document.getElementById('aia-client-income').value) || 0;
-            const policyType = document.getElementById('aia-client-policy').value;
+            
+            // 讀取多選點選框的值
+            const selectedPolicies = [];
+            document.querySelectorAll('.aia-policy-checkbox:checked').forEach(cb => {
+                selectedPolicies.push(cb.value);
+            });
+            const policyType = selectedPolicies.join('、') || '其他';
+
             const premium = Number(document.getElementById('aia-client-premium').value) || 0;
             const stage = document.getElementById('aia-client-stage').value;
             const notes = document.getElementById('aia-client-notes').value.trim();
 
             if (!name) {
                 window.showToast("客戶名稱為必填項！", false);
+                return;
+            }
+
+            if (selectedPolicies.length === 0) {
+                window.showToast("請至少勾選一項意向投保產品！", false);
                 return;
             }
 
@@ -2010,7 +2058,13 @@
             document.getElementById('aia-client-name').value = client.name;
             document.getElementById('aia-client-phone').value = client.phone || '';
             document.getElementById('aia-client-income').value = client.income || '';
-            document.getElementById('aia-client-policy').value = client.policyType;
+            
+            // 還原多選點選框的狀態
+            const policies = client.policyType ? client.policyType.split('、') : [];
+            document.querySelectorAll('.aia-policy-checkbox').forEach(cb => {
+                cb.checked = policies.includes(cb.value);
+            });
+
             document.getElementById('aia-client-premium').value = client.premium || '';
             document.getElementById('aia-client-stage').value = client.stage;
             document.getElementById('aia-client-notes').value = client.notes || '';
@@ -2676,12 +2730,12 @@
             quoteBody += `📸 *推廣項目規格：*\n  • ${formatText}\n`;
             
             if (addonBeauty) quoteBody += `  • 💄 增值加購：美容/瘦身/療程體驗內容 (+HKD $5,000)\n`;
-            if (addonEvent) quoteBody += `  • 🎪 增值加購：出席 brand 線下實體活動 (+HKD $8,000)\n`;
+            if (addonEvent) quoteBody += `  • 🎪 增值加購：出席品牌線下實體活動 (+HKD $8,000)\n`;
             if (adMonths > 0) quoteBody += `  • 📈 廣告管理員投放授權：${adMonths} 個月 (+HKD $${(adMonths*3000).toLocaleString()})\n`;
             
             quoteBody += `\n🎁 *免費附贈：* 2 則 IG Story 影片/靜態圖文聯播\n`;
             quoteBody += `💰 *打包合作試算總預算：* ${totalText}\n\n`;
-            quoteBody += `💫 *綜合宣傳服務細節，具體預算安排皆可進一步商榷。* 🤗 期待與您的 brand 建立良好合作關係！❤️`;
+            quoteBody += `💫 *綜合宣傳服務細節，具體預算安排皆可進一步商榷。* 🤗 期待與您的品牌建立良好合作關係！❤️`;
 
             if (type === 'email') {
                 quoteBody = quoteBody.replaceAll('*', '');
@@ -2786,11 +2840,11 @@
             if (type === 'decline') {
                 prompt = "保險客戶說現在沒有保費預算，或者想先找其他公司的代理比較一下。請用專業、高情商、不卑不亢、得體且留有餘地的廣東話，幫我寫一封切合 AIA 專業財富策劃顧問身份的 WhatsApp 破冰與價值重申跟進信息。";
             } else if (type === 'followup') {
-                prompt = "幫我針對馬先生（中小企老闆高端醫療 $65,000 年繳）寫一封高情商廣東話跟進 WhatsApp。禮貌詢問他關於身體檢查或入息證明補交的進度，暗示核保部最近政策可能有微調，建議儘早鎖定保障，同時恭喜他 BB 順利開學。";
+                prompt = "幫我針對馬先生（中小企老闆高端醫療、儲蓄年繳保費 $65,000）寫一封高情商廣東話跟進 WhatsApp。禮貌詢問他關於身體檢查或入息證明補交的進度，暗示核保部最近政策可能有微調，建議儘早鎖定保障，同時恭喜他 BB 順利開學。";
             } else if (type === 'audit') {
                 prompt = "我想審查合約。請幫我分析我們目前備忘中是否有『版權無限買斷、重拍次數不限、付款比例不合理』等業界常見合約地雷。如果是 AIA 大案，請特別注意是否包含了保險產品免責條款合規避坑指南，並直接提供保護 Lydia 身價利益的修改標準文字。";
             } else if (type === 'debrief') {
-                prompt = "有一位意向客戶梁小姐（新手媽媽 $18,000 年繳危疾保單）一直考慮中沒有回覆。請教我如何用 Lydia 作為『幸福傳聲大使』以及『苗齒榮譽副主席』等高尚社會慈善公眾形象作為話題切入點，趁熱打鐵向她發送一封溫暖、關懷且能轉化簽單的主動溝通信息。";
+                prompt = "有一位意向客戶梁小姐（新手媽媽危疾、人壽年繳保費 $18,000）一直考慮中沒有回覆。請教我如何用 Lydia 作為『幸福傳聲大使』以及『苗齒榮譽副主席』等高尚社會慈善公眾形象作為話題切入點，趁熱打鐵向她發送一封溫暖、關懷且能轉化簽單的主動溝通信息。";
             }
 
             document.getElementById('gemini-input-text').value = prompt;
@@ -2810,7 +2864,7 @@
                     name: brand,
                     phone: "",
                     income: 0,
-                    policyType: "醫療：尊顯海外醫療計劃",
+                    policyType: "醫療、危疾",
                     premium: 20000,
                     stage: "FNA",
                     notes: "透過 Gemini AI 語意化快速新增建檔。等候補充 FNA 詳細數據。"
@@ -2823,7 +2877,7 @@
 
                 return {
                     success: true,
-                    reply: `✨ <b>[系統已自動建立 AIA 客戶檔案]</b><br>我已為您呼叫了 <code>create_aia_record</code>，並建立 <b>「${brand}」</b> 的 AIA 意向客戶檔案！您可以在左側名冊進行細節補充。`
+                    reply: `✨ <b>[系統已自動建立 AIA 客戶檔案]</b><br>我已為您呼叫了 <code>create_aia_record</code>，並建立 <b>「${brand}」</b> 的 AIA 意向客戶檔案（默認意向產品為「醫療、危疾」）！您可以在左側名冊進行細節與勾選補錄。`
                 };
             }
 
@@ -2884,9 +2938,9 @@
                 setTimeout(() => {
                     let fallbackResponse = "";
                     if (txt.includes("馬先生") || txt.includes("醫療")) {
-                        fallbackResponse = "💼 <b>【馬先生高端醫療 $65,000 專案跟進分析】</b>\n馬先生作為中小企老闆，通常對合約的行政效率要求極高，同時非常注重私隱及健康保障細節。\n\n<b>⚠️ 核保與跟進要點：</b>\n1. <b>入息證明與核保信件</b>：高端醫療 (SMC) 的保費核保可能需要馬先生公司的 BR 或者是近期的個人入息水單。為防客戶嫌煩，應強調這是為了確保日後『免找數出院保障 (Credit)』能 100% 順暢批出。\n2. <b>高情商 WhatsApp 催交文案（廣東話）：</b>\n\n「馬生你好呀！BB 開學一排適應得好嗎？😄 我同你跟進番尊顯海外醫療保單嘅核保進度 ✍️ 中環核保部啱啱出咗信，想麻煩你補一補公司 BR 影印本。我知你平時打理生意好忙，所以你隨手影張相 Send 俾我，其他行政手續我會即時幫你搞妥。今早同核保主管溝通過，只要今日內補交到，預計下週一就能正式出單，等全家人盡快鎖定全數保障。祝你生意興隆，週末愉快呀！✨ - Lydia」";
+                        fallbackResponse = "💼 <b>【馬先生 醫療、儲蓄保單跟進分析】</b>\n馬先生作為中小企老闆，通常對合約的行政效率要求極高，同時非常注重私隱及健康保障細節。\n\n<b>⚠️ 核保與跟進要點：</b>\n1. <b>入息證明與核保信件</b>：高端醫療與大額儲蓄保費核保可能需要馬先生公司的 BR 或者是近期的個人入息證明。為防客戶嫌煩，應強調這是為了確保日後『免找數出院保障 (Credit)』能 100% 順暢批出。\n2. <b>高情商 WhatsApp 催交文案（廣東話）：</b>\n\n「馬生你好呀！BB 開學一排適應得好嗎？😄 我同你跟進番尊顯海外醫療與儲蓄保單嘅核保進度 ✍️ 中環核保部啱啱出咗信，想麻煩你補一補公司 BR 影印本。我知你平時打理生意好忙，所以你隨手影張相 Send 俾我，其他行政手續我會即時幫你搞妥。今早同核保主管溝通過，只要今日內補交到，預計下週一就能正式出單，等全家人盡快鎖定全數保障。祝你生意興隆，週末愉快呀！✨ - Lydia」";
                     } else if (txt.includes("梁小姐") || txt.includes("危疾")) {
-                        fallbackResponse = "👶 <b>【梁小姐新生命與危疾守護跟進分析】</b>\n梁小姐作為新手媽媽，正處於家庭開支和愛心爆棚的關鍵期。這時候利用 Lydia 擁有的<b>「香港幸福傳聲大使」</b>與<b>「香港苗齒協會榮譽副主席」</b>公眾慈善形象，能夠大大增加專業說服力，將推銷轉化為真摯的社區關懷：\n\n<b>🌸 溫慢且無壓力的跟進文案（廣東話）：</b>\n\n「嗨阿梁 (梁小姐)！新手媽媽的生活雖然辛苦但一定好甜蜜 🥰 之前同你傾過為 BB 增設嘅泰然安心保危疾計劃，因為我自己近期擔任 **幸福傳聲基金會大使** 同 **香港苗齒榮譽副主席**，經常接觸到好多基層小朋友嘅健康需要，深深覺得及早做好健康防禦網，係父母送俾仔女最重要嘅防護禮物。我為 BB 度身定制嘅呢份計劃每日其實只係幾十蚊，但就可以鎖定幾十萬嘅醫療大病防線。你得閒隨時話我知，我為你同 BB 送份健康小福袋過來，一齊飲杯茶傾吓！☕❤️ - Lydia」";
+                        fallbackResponse = "👶 <b>【梁小姐新生命與 危疾、人壽 守護跟進分析】</b>\n梁小姐作為新手媽媽，正處於家庭開支和愛心爆棚的關鍵期。這時候利用 Lydia 擁有的<b>「香港幸福傳聲大使」</b>與<b>「香港苗齒協會榮譽副主席」</b>公眾慈善形象，能夠大大增加專業說服力，將推銷轉化為真摯的社區關懷：\n\n<b>🌸 溫暖且無壓力的跟進文案（廣東話）：</b>\n\n「嗨阿梁 (梁小姐)！新手媽媽的生活雖然辛苦但一定好甜蜜 🥰 之前同你傾過為 BB 增設嘅泰然安心保危疾與人壽保障計劃，因為我自己近期擔任 **幸福傳聲基金會大使** 同 **香港苗齒榮譽副主席**，經常接觸到好多基層小朋友嘅健康需要，深深覺得及早做好健康防禦網，係父母送俾仔女最重要嘅防護禮物。我為 BB 度身定制嘅呢份計劃每日其實只係幾十蚊，但就可以鎖定幾十萬嘅醫療大病防線。你得閒隨時話我知，我為你同 BB 送份健康小福袋過來，一齊飲杯茶傾吓！☕❤️ - Lydia」";
                     } else {
                         fallbackResponse = "好的，我已收到您的指示。我現在扮演您的專業 AIA Sales 導師兼演藝經紀助理。\n\n若想正式接通 Google Gemini 大語言模型，請在系統頂部輸入您的 <b>Gemini API Key</b>；即使不填寫金鑰，我也會隨時在本地為您執行高情商的公關、談判與 AIA 保險避坑、高轉化簽單廣東話話術！您可以隨時輸入「新增客戶」、「建立專案」來對系統建檔！";
                     }
@@ -2898,7 +2952,7 @@
 
             const systemInst = `
             # Role (角色與定位)
-            你是「Lydia 藝人商業協作與 AIA 專業銷售管理系統」的專屬 AI 系統助理。你的任務是透過自然流暢的廣東話對話，協助 Lydia 管理 AIA 保險客群、試算 FYC 佣金、起草高情商保單催覆 WhatsApp，以及處理日常行政工作。
+            你是「Lydia 藝人商業協作與 AIA 專業銷售管理系統」的專屬 AI 系統助理。你的任務是透過自然流暢的廣東話對話，協助 Lydia 管理 AIA 保險客群（包含醫療、危疾、儲蓄、人壽、基金、強積金、團體醫療、其他等多元保險產品）、試算 FYC 佣金、起草高情商保單催覆 WhatsApp，以及處理日常行政工作。
             `;
 
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${state.apiKey}`;
